@@ -8,6 +8,7 @@ import java.util.Set;
 
 import it.unibo.oop.lab.socialnetwork.SocialNetworkUserImpl;
 import it.unibo.oop.lab.socialnetwork.User;
+import it.unibo.oop.lab.socialnetwork.UserImpl;
 
 /**
  * 
@@ -53,12 +54,12 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * TODO: initialize properly these sports
      */
     static {
-        SOCCER = null;
-        F1 = null;
-        MOTOGP = null;
-        VOLLEY = null;
-        BASKET = null;
-        BIKE = null;
+        SOCCER = new Sport("Soccer");
+        F1 = new Sport("F1");
+        MOTOGP = new Sport("MotoGP");
+        VOLLEY = new Sport("Volley");
+        BASKET = new Sport("Basket");
+        BIKE = new Sport("Bike");
     }
 
     /**
@@ -114,7 +115,7 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      */
     // TODO
     public void addSport(final Sport sport) {
-
+    	this.sports.add(sport);
     }
 
     /**
@@ -126,7 +127,7 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      */
     // TODO
     public boolean hasSport(final Sport s) {
-        return false;
+        return this.sports.contains(s);
     }
 
     /*
@@ -136,14 +137,31 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * with its bare name.
      */
     public static final class Sport {
-        /*
+        private final String sportName;
+        
+        public Sport(String sportName) {
+        	this.sportName = sportName;
+        }
+        
+        public String getName() {
+        	return this.sportName;
+        }
+    	/*
          * TODO
          * 
          * Redefine equals so that two sports are equal only if they feature the
          * very same name. Remember that you must also redefine hashCode()!
          */
+        public int hashCode() {
+        	return this.sportName.hashCode();
+        }
+        
         @Override
         public boolean equals(final Object o) {
+        	if (o instanceof Sport) {
+                final Sport sp2 = (Sport) o;
+                return this.getName().equals(sp2.getName());
+            }
             return false;
         }
     }
