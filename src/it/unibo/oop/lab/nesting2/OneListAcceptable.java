@@ -12,17 +12,16 @@ public class OneListAcceptable<T> implements Acceptable<T> {
 	
 	@Override
 	public Acceptor<T> acceptor() {
-		final Iterator<T> iterator = this.list.iterator();
-		
 		return new Acceptor<T>() {
-
+			final Iterator<T> iterator = OneListAcceptable.this.list.iterator();
 			@Override
 			public void accept(T newElement) throws ElementNotAcceptedException {
 				try {
+
 					if(newElement.equals(iterator.next())) {
 						return;
 					}
-				}catch(ElementNotAcceptedException e) {
+				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
 				throw new ElementNotAcceptedException(newElement);
@@ -34,7 +33,7 @@ public class OneListAcceptable<T> implements Acceptable<T> {
                     if (!iterator.hasNext()) {
                         return;
                     }
-                } catch (EndNotAcceptedException e) {
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
                 throw new EndNotAcceptedException();	

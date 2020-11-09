@@ -59,7 +59,7 @@ public class AcceptableTest {
         }
         try {
             // makes an exception to be raised;
-            acceptor.accept(-1);
+        	acceptor.accept(50);
             // assert: impossible to get here with a wrong element
             fail("Element out of sequence");
         } catch (Acceptor.ElementNotAcceptedException e) {
@@ -82,7 +82,7 @@ public class AcceptableTest {
         final Acceptable<Integer> acc = new OneListAcceptable<>(list);
         final Acceptor<Integer> acceptor = acc.acceptor();
         try {
-            acceptor.accept(20);
+            acceptor.accept(10);
         } catch (Acceptor.ElementNotAcceptedException e) {
             fail("No element expected: " + e.getElement());
         }
