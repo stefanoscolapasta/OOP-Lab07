@@ -28,14 +28,14 @@ public enum Sport {
      * declare the following sports: - basket - soccer - tennis - bike - F1 -
      * motogp - volley
      */
-	private final String actualName;
 	private final Place actualPlace;
 	private final int noTeamMembers;
+	private final String actualName;
 	
 	private Sport(final Place place, final int noTeamMembers, final String actualName) {
-		this.actualName = actualName;
 		this.actualPlace = place;
 		this.noTeamMembers = noTeamMembers;
+		this.actualName = actualName;	
 	}
 	
 	public String getName() {
