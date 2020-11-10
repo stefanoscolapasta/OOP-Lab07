@@ -17,14 +17,14 @@ public class OneListAcceptable<T> implements Acceptable<T> {
 			final Iterator<T> iterator = OneListAcceptable.this.list.iterator();
 			@Override
 			public void accept(T newElement) throws ElementNotAcceptedException {
-				if(!newElement.equals(iterator.next())) {
+				if(!this.iterator.hasNext() || !newElement.equals(this.iterator.next())) {
 					throw new ElementNotAcceptedException(newElement);
-				}			
+				}
 			}
 
 			@Override
 			public void end() throws EndNotAcceptedException {
-                if (iterator.hasNext()) {
+                if (this.iterator.hasNext()) {
                 	throw new EndNotAcceptedException();
                 }   	
 			}
