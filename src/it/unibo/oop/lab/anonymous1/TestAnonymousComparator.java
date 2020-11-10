@@ -59,7 +59,7 @@ public final class TestAnonymousComparator {
         final SocialNetworkUser<User> ntaleb = new SocialNetworkUserImpl<>("Nicholas", "Taleb", "ntaleb", 54);
         final SocialNetworkUser<User> mrossi = new SocialNetworkUserImpl<>("Mario", "Rossi", "mrossi", 31);
         final SocialNetworkUser<User> pverdi = new SocialNetworkUserImpl<>("Paolo", "Verdi", "pverdi", 24);
-        // TEST on DENZEL
+
         dwashington.addFollowedUser("relatives", mrossi);
         dwashington.addFollowedUser("relatives", pverdi);
         dwashington.addFollowedUser("colleagues", kbacon);
@@ -73,13 +73,14 @@ public final class TestAnonymousComparator {
 	        	}
         	});
         
+        /**
         //Alternative is:
-//        Collections.sort(denzelUsers, new Comparator<User>(){
-//	        	public int compare(User a, User b) {
-//	        		return a.getAge() - b.getAge();
-//	        	}
-//        	});
-
+        Collections.sort(denzelUsers, new Comparator<User>(){
+	        	public int compare(User a, User b) {
+	        		return a.getAge() - b.getAge();
+	        	}
+        	});
+         */
         /*
          * Order denzel's followed users incrementally by age:
          * 

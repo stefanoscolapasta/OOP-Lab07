@@ -1,5 +1,7 @@
 package it.unibo.oop.lab.enum1;
 
+import java.io.DataOutputStream;
+
 import it.unibo.oop.lab.socialnetwork.User;
 
 /**
