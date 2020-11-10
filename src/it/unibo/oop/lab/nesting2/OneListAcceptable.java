@@ -4,13 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 public class OneListAcceptable<T> implements Acceptable<T> {
-
 	private final List<T> list;
 	
 	public OneListAcceptable(List<T> list) {
 		this.list = list;
 	}
-
+	
 	@Override
 	public Acceptor<T> acceptor() {
 		return new Acceptor<T>() {
@@ -26,7 +25,7 @@ public class OneListAcceptable<T> implements Acceptable<T> {
 			public void end() throws EndNotAcceptedException {
                 if (this.iterator.hasNext()) {
                 	throw new EndNotAcceptedException();
-                }   	
+                }   	  	
 			}
 			
 		};
