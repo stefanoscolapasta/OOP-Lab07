@@ -28,6 +28,7 @@ public enum Sport {
      * declare the following sports: - basket - soccer - tennis - bike - F1 -
      * motogp - volley
      */
+	private static final int INDIVIDUAL = 1;
 	private final Place actualPlace;
 	private final int noTeamMembers;
 	private final String actualName;
@@ -47,7 +48,7 @@ public enum Sport {
 	}
 	
 	public boolean isIndividualSport() {
-		return 1 == this.noTeamMembers;
+		return this.noTeamMembers == Sport.INDIVIDUAL;
 	}
 	
 	public boolean isIndoorSport() {
