@@ -3,6 +3,9 @@
  */
 package it.unibo.oop.lab.enum2;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import it.unibo.oop.lab.socialnetwork.SocialNetworkUserImpl;
 import it.unibo.oop.lab.socialnetwork.User;
 
@@ -24,7 +27,8 @@ import it.unibo.oop.lab.socialnetwork.User;
  *            specific {@link User} type
  */
 public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUserImpl<U> {
-
+	
+	private final Set<Sport> sports;
     /*
      * TODO
      * 
@@ -61,6 +65,7 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      */
     public Sport2SocialNetworkUserImpl(final String name, final String surname, final String user, final int userAge) {
         super(name, surname, user, userAge);
+        this.sports = new HashSet<>();
     }
 
     /*
@@ -75,7 +80,7 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      *            a sport followed/done by the user
      */
     public void addSport(final Sport sport) {
-
+    	this.sports.add(sport);
     }
 
     /**
@@ -87,13 +92,33 @@ public class Sport2SocialNetworkUserImpl<U extends User> extends SocialNetworkUs
      * @return true if user likes sport s
      */
     public boolean likesSport(final Sport s) {
-        return false;
+        return this.sports.contains(s);
     }
 
     /*
      * [METHODS] NEW METHODS TO IMPLEMENT FROM SCRATCH
      */
-
+    
+    public Set<Sport> getIndividualSports() { 
+    	final Set<Sport> indivSports = new HashSet<>();
+    	for(Sport s : this.sports) {
+    		if(s.isIndividualSport()) {
+    			indivSports.add(s);
+    		}
+    	}
+    	return indivSports;
+    }
+    
+    public Set<Sport> getSportPracticedInPlace(Place p) {
+    	final Set<Sport> placeSports = new HashSet<>();
+    	for(Sport s : this.sports) {
+    		if(s.getPlace() == p) {
+    			placeSports.add(s);
+    		}
+    	}
+    	return placeSports;
+    }
+    
     /**
      * Returns the set of individual sports followed/practiced by this user: a
      * sport is individual if the number of team member is = 1.

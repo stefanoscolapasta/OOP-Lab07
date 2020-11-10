@@ -17,27 +17,47 @@ package it.unibo.oop.lab.enum2;
  */
 public enum Sport {
 
+	BASKET(Place.INDOOR , 5, "Basket"),
+	SOCCER(Place.OUTDOOR , 11, "Soccer"),
+	TENNIS(Place.OUTDOOR , 1, "Tennis"),
+	BIKE(Place.OUTDOOR, 1, "Bike"), 
+	F1(Place.OUTDOOR, 1, "F1"), 
+	MOTOGP(Place.OUTDOOR, 1, "MotoGP"), 
+	VOLLEY(Place.OUTDOOR, 7, "Volley");
     /*
-     * TODO
-     * 
-     * Declare the following sports:
-     * 
-     * - basket
-     * 
-     * - volley
-     * 
-     * - tennis
-     * 
-     * - bike
-     * 
-     * - F1
-     * 
-     * - motogp
-     * 
-     * - soccer
-     * 
+     * declare the following sports: - basket - soccer - tennis - bike - F1 -
+     * motogp - volley
      */
-
+	private final String actualName;
+	private final Place actualPlace;
+	private final int noTeamMembers;
+	
+	private Sport(final Place place, final int noTeamMembers, final String actualName) {
+		this.actualName = actualName;
+		this.actualPlace = place;
+		this.noTeamMembers = noTeamMembers;
+	}
+	
+	public String getName() {
+		return this.actualName;
+	}
+	
+	public Place getPlace() {
+		return this.actualPlace;
+	}
+	
+	public boolean isIndividualSport() {
+		return 1 == this.noTeamMembers;
+	}
+	
+	public boolean isIndoorSport() {
+		return Place.INDOOR == this.actualPlace;
+	}
+	
+	public String toString() {
+		return this.getName() + this.getPlace().toString() + " is played in " + this.noTeamMembers + " per team";
+	}
+	
     /*
      * TODO
      * 
