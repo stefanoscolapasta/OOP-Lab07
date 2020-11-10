@@ -27,7 +27,6 @@ public class OneListAcceptable<T> implements Acceptable<T> {
                 	throw new EndNotAcceptedException();
                 }   	  	
 			}
-			
 		};
 		
 	}
