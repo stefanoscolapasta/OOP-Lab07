@@ -24,9 +24,9 @@ public class OneListAcceptable<T> implements Acceptable<T> {
 
 			@Override
 			public void end() throws EndNotAcceptedException {
-                if (iterator.hasNext()) {
-                	throw new EndNotAcceptedException();
-                }   	
+                		if (iterator.hasNext()) {
+                			throw new EndNotAcceptedException();
+                		}   	
 			}
 			
 		};
